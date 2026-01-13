@@ -23,4 +23,8 @@ TCP ends the connection gracefully by performing a four way handshake.
 - server responds with ACK
 - then the server sends a FIN flag too
 - client acknowledges the FIN flag with ACK
- 
+
+# Some Issues Ive Faced When I wrote the Code:
+
+- I'd connect to the server using local host (127.0.0.1:8000). It'd connect and send the response but when I reconnected, it didnt. But then I don't know what I did and it works now.
+- When I connect the client I wrote in C, it sends the message and receives response on first try but it fails the second time and then the code terminates. Even though I have written it in a while loop which is set "1" so I don't know why its quiting.

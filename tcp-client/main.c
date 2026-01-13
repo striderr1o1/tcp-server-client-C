@@ -15,12 +15,17 @@ int main(){
     server_addr.sin_port =htons(8080);
     server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 //    bind(socket_fd, (struct sockaddr*)&server_addr, sizeof(server_addr));
+    while(1){
     connect(socket_fd, (struct sockaddr*)&server_addr, sizeof(server_addr));
-    const char* sending_mssg = "OOOOOOOOOOO";
+    char sending_mssg[50] = {0};
+    printf("Enter string \n");
+    fgets(sending_mssg, sizeof(sending_mssg), stdin);
     printf("sending %s", sending_mssg);
     send(socket_fd, sending_mssg, sizeof(sending_mssg), 0);
     char buffer[1024] = {0};
     read(socket_fd, buffer, sizeof(buffer));
     printf("Received %s", buffer);
-    close(socket_fd);  
+    }
+
+    close(socket_fd); 
 }
